@@ -1,7 +1,11 @@
 #### List files in OSF component
 
 osf_component <- "26j4q"  # id part of the component URL
+save_dir <- "raw_data"  # directory to save into
 Sys.setenv(OSF_SERVER = "test")  # set to testing environment
+
+if (!dir.exists(save_dir))
+  dir.create(save_dir)
 
 component <- osfr::osf_retrieve_node(osf_component)
 files <- osfr::osf_ls_files(component)
